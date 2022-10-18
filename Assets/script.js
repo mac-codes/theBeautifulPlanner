@@ -13,15 +13,15 @@ $(document).ready(function () {// essentially tells engine to load 1)html & 2)cs
         localStorage.setItem(time, text);
     })
   //load any saved data from LocalStorage - do this for each hour created.
-    $("#hour9 .description").val(localStorage.getItem("hour9"));
-    $("#hour10 .description").val(localStorage.getItem("hour10"));
-    $("#hour11 .description").val(localStorage.getItem("hour11"));
-    $("#hour12 .description").val(localStorage.getItem("hour12"));
-    $("#hour13 .description").val(localStorage.getItem("hour13"));
-    $("#hour14 .description").val(localStorage.getItem("hour14"));
-    $("#hour15 .description").val(localStorage.getItem("hour15"));
-    $("#hour16 .description").val(localStorage.getItem("hour16"));
-    $("#hour17 .description").val(localStorage.getItem("hour17"));
+    $("#hour9.description").val(localStorage.getItem("hour9"));
+    $("#hour10.description").val(localStorage.getItem("hour10"));
+    $("#hour11.description").val(localStorage.getItem("hour11"));
+    $("#hour12.description").val(localStorage.getItem("hour12"));
+    $("#hour13.description").val(localStorage.getItem("hour13"));
+    $("#hour14.description").val(localStorage.getItem("hour14"));
+    $("#hour15.description").val(localStorage.getItem("hour15"));
+    $("#hour16.description").val(localStorage.getItem("hour16"));
+    $("#hour17.description").val(localStorage.getItem("hour17"));
 
 
     function hourTracker() {
@@ -30,16 +30,16 @@ $(document).ready(function () {// essentially tells engine to load 1)html & 2)cs
 
       // loop over time blocks
         $(".time-block").each(function () {
-            var blockHour = parseInt($(this).attr("id").split("hour")[1]);
-            console.log( blockHour, currentHour)
+            var hourBlock = parseInt($(this).attr("id").split("hour")[1]);
+            console.log( hourBlock, currentHour)
 
           //check if we've moved past this time
-            if (blockHour < currentHour) {
+            if (hourBlock < currentHour) {
                 $(this).addClass("past");
                 $(this).removeClass("future");
                 $(this).removeClass("present");
             }
-            else if (blockHour === currentHour) {
+            else if (hourBlock === currentHour) {
                 $(this).removeClass("past");
                 $(this).addClass("present");
                 $(this).removeClass("future");
