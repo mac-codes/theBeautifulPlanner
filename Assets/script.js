@@ -1,10 +1,10 @@
-$(document).ready(function () {// essentially tells engine to load 1)html & 2)css first.
-  //display current day & time.
+$(document).ready(function () {// loads the html and css first (saw in an example)
+  //display current day & time
     $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm"));
 
   //Assign saveBtn click listener for user input and time stamp??
     $(".saveBtn").on("click", function () {
-      //get nearby values.
+      //get values fr text and time
         console.log(this);
         var text = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
@@ -12,7 +12,7 @@ $(document).ready(function () {// essentially tells engine to load 1)html & 2)cs
       //set items in local storage.
         localStorage.setItem(time, text);
     })
-  //load any saved data from LocalStorage - do this for each hour created.
+  //load the saved data from each text-area. 
     $("#hour9 .description").val(localStorage.getItem("hour9"));
     $("#hour10 .description").val(localStorage.getItem("hour10"));
     $("#hour11 .description").val(localStorage.getItem("hour11"));
@@ -25,7 +25,7 @@ $(document).ready(function () {// essentially tells engine to load 1)html & 2)cs
 
 
     function hourTracker() {
-      //get current number of hours.
+      //get current hours
         var currentHour = moment().hour();
 
       // loop over time blocks
@@ -33,7 +33,7 @@ $(document).ready(function () {// essentially tells engine to load 1)html & 2)cs
             var blockHour = parseInt($(this).attr("id").split("hour")[1]);
             console.log( blockHour, currentHour)
 
-          //check if we've moved past this time
+          //check what time it is and add or remove classes
             if (blockHour < currentHour) {
                 $(this).addClass("past");
                 $(this).removeClass("future");
